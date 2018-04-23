@@ -228,9 +228,9 @@ namespace libtorrent {
 
 			file_status s;
 			std::string const file_path = files().file_path(i, m_save_path);
-			error_code ec;
-			stat_file(file_path, &s, ec);
-			if (!ec)
+			error_code err;
+			stat_file(file_path, &s, err);
+			if (!err)
 			{
 				use_partfile(i, false);
 			}

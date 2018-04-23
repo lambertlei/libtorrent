@@ -51,13 +51,13 @@ namespace aux {
 
 	file_storage const& posix_storage::files() const { return m_mapped_files ? *m_mapped_files.get() : m_files; }
 
-	int posix_storage::readv(session_settings const& sett
+	int posix_storage::readv(session_settings const&
 		, span<iovec_t const> bufs
 		, piece_index_t const piece, int const offset
 		, storage_error& error)
 	{
 		return readwritev(files(), bufs, piece, offset, error
-			, [this, &sett](file_index_t const file_index
+			, [this](file_index_t const file_index
 				, std::int64_t const file_offset
 				, span<iovec_t const> vec, storage_error& ec)
 		{
@@ -107,13 +107,13 @@ namespace aux {
 		});
 	}
 
-	int posix_storage::writev(session_settings const& sett
+	int posix_storage::writev(session_settings const&
 		, span<iovec_t const> bufs
 		, piece_index_t const piece, int const offset
 		, storage_error& error)
 	{
 		return readwritev(files(), bufs, piece, offset, error
-			, [this, &sett](file_index_t const file_index
+			, [this](file_index_t const file_index
 				, std::int64_t const file_offset
 				, span<iovec_t const> vec, storage_error& ec)
 		{
