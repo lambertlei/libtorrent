@@ -35,7 +35,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <cstring>
 
-#ifndef TORRENT_NO_DEPRECATE
+#if TORRENT_ABI_VERSION == 1
 #include "libtorrent/lazy_entry.hpp"
 #endif
 
@@ -145,7 +145,7 @@ TORRENT_TEST(implicit_construct)
 	TEST_EQUAL(e.list().back().type(), entry::list_t);
 }
 
-#ifndef TORRENT_NO_DEPRECATE
+#if TORRENT_ABI_VERSION == 1
 TORRENT_TEST(lazy_entry)
 {
 	{
@@ -638,4 +638,4 @@ TORRENT_TEST(lazy_entry)
 		}
 	}
 }
-#endif // TORRENT_NO_DEPRECATE
+#endif // TORRENT_ABI_VERSION
